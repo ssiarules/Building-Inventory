@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  root 'buildings#index'
+
+  get 'login' => "buildings#new"
+  post 'login' =>"buildings#create"
+
+  get 'signup' => "users#new"
+  post 'signup' =>"users#create"
+
   resources :users
   resources :products
   resources :floors

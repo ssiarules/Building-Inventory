@@ -1,0 +1,4 @@
+rails g resource Building name floor_num:integer
+rails g resource Floor name floor_num:integer building:belongs_to
+rails g resource Product name cateogory floor_num:integer in_stock:integer description:text date_added:datetime user:belongs_to floor:belongs_to
+rails g resource User username email building:belongs_to
