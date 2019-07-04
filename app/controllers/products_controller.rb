@@ -8,10 +8,6 @@ class ProductsController < ApplicationController
 
     end 
 
-    def show 
-        @product = Product.find(params[:id])
-    end 
-
     def create 
         @product = Product.new(product_params)
 
@@ -20,16 +16,20 @@ class ProductsController < ApplicationController
                 session[:product_id] = @product.id 
                 redirect_to product_path(@product)
             else 
-            render :new 
+            render :show
 
             end 
     
         #@product = current_user.created_products.build(product_params)
 end 
 
+def show 
+    @product = Product.find_by(id: params[:id])
+end 
+
     private 
 
     def product_params
-        params.require(:product).permit(:name, :cateogory, :description, :building, :floor_num, :in_stock, :date_added )
+        params.require(:product).permit(:name, :category, :description, :building, :floor_num, :in_stock, :date_added)
     end 
 end
