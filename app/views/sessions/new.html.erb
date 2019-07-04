@@ -4,7 +4,7 @@
     <%= flash[:message] %>
 <% end %>
 
-<%= form_for :user do |f |%> <!-- we are not creating a new user we are just finding a user in the database and checking their credintials so we change it to :user. It will provide the form action -->
+<%= form_for :user do |f |%> <!-- we are not creating a new user we are just finding a user in the database and checking their credentials so we change it to :user. It will provide the form action -->
 
 <%= f.label :username %>
 <%= f.text_field :username%>

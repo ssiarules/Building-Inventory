@@ -2,3 +2,20 @@ rails g resource Building name floor_num:integer
 rails g resource Floor name floor_num:integer building:belongs_to
 rails g resource Product name cateogory floor_num:integer in_stock:integer description:text date_added:datetime user:belongs_to floor:belongs_to
 rails g resource User username email building:belongs_to
+
+
+add new column to an existing table 
+1. generate a new migration - rails g migration add_building_to_products building:string
+2. manual add the change column inside the product table migration.
+
+Concerns:
+    1. Ever users should be able to see building inventory of any building they selected to view inputs that was added from other users. They should also be able to makes edits. 
+        Try. in my User create action add a redirect to the building/show new user selected. 
+
+    2. would I need to add validates to my product model for no double cateogories? 
+
+clear and rests table 
+rake db:schema:dump
+and then:
+
+rake db:schema:load

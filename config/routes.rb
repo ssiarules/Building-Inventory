@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   delete '/logout', to: "sessions#destroy"  #making a delete action, the logout clickable on the page
 
   get '/signup', to: "users#new"
-  post '/signup', to:"users#create"
+  post '/signup', to: "users#create"
+
+  post '/products/new', to: "products#new"
 
   resources :users
   resources :products
