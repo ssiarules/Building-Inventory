@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get '/login', to: "sessions#new"
   post '/login', to:"sessions#create"
 
-  delete '/logout', to: "sessions#destroy"  #making the logout clickable on the page
+  delete '/logout', to: "sessions#destroy"  #making a delete action, the logout clickable on the page
 
   get '/signup', to: "users#new"
   post '/signup', to:"users#create"

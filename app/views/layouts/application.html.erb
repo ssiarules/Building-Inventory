@@ -11,7 +11,7 @@
 
   <body>
 
-        <% link_to 'logout', '/logout'%> <!--This will add logout to every page -->
+        <%= link_to 'logout', '/logout', method: :delete %> <!--This will add logout to every page -->
 
     <%= yield %>
   </body>

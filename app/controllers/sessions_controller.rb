@@ -10,4 +10,9 @@ class SessionsController < ApplicationController
       
     end 
 
+    def destroy 
+        session.clear #clear the session 
+        redirect_to root_path #redirect the user back to the main page after logging out 
+    end 
+
 end
