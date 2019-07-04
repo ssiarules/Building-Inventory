@@ -3,6 +3,7 @@ class CreateBuildings < ActiveRecord::Migration[5.2]
     create_table :buildings do |t|
       t.string :name
       t.integer :floor_num
+      t.integer :user_id 
 
       t.timestamps
     end

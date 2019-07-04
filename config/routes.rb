@@ -1,15 +1,18 @@
 Rails.application.routes.draw do
-  root 'buildings#index'
+  root 'sessions#index'
 
-  get 'login' => "buildings#new"
-  post 'login' =>"buildings#create"
+  get '/login', to: "sessions#new"
+  post '/login', to:"sessions#create"
 
-  get 'signup' => "users#new"
-  post 'signup' =>"users#create"
+  delete '/logout', to: "sessions#destroy"  #making the logout clickable on the page
+
+  get '/signup', to: "users#new"
+  post '/signup', to:"users#create"
 
   resources :users
   resources :products
   resources :floors
   resources :buildings
+  resources :sessions
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
