@@ -1,20 +1,17 @@
-<h1> Sign Up Here! </h1>
-<h2> Once you sign up you will have access to your building inventory management system. </h2>
+<h1> Log In Here! </h1>
 
+<% if flash[:message] %>
+    <%= flash[:message] %>
+<% end %>
 
-<%= form_for @user do |f |%>
+<%= form_for :user do |f |%> <!-- we are not creating a new user we are just finding a user in the database and checking their credintials so we change it to :user. It will provide the form action -->
 
 <%= f.label :username %>
 <%= f.text_field :username%>
 
-
-<%= f.label :email%>
-<%= f.email_field :email, required:true%>  <!--required:true gives the user the front validation but does not validate in the back end! -->
-
-
 <%= f.label :password %>
 <%= f.password_field :password%>
 
-<%= f.submit "Sign Up" %>
+<%= f.submit "Log In " %>
 
 <% end%>
