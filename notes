@@ -19,3 +19,8 @@ rake db:schema:dump
 and then:
 
 rake db:schema:load
+
+-------------------------------------------------------------------
+User flow
+
+1.user creates account -> user show page -> create a link to  

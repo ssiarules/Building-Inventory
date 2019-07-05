@@ -4,6 +4,7 @@ class BuildingsController < ApplicationController
     end 
 
     def new 
+        @building = Building.new
     end 
 
     def create 

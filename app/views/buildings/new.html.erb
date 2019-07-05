@@ -1,0 +1,21 @@
+<h1>Record Your Building Inventory</h1>
+
+<%= form_for @building do |f| %>
+
+ <%= f.label :date %> <br>
+  <%= f.date_field :date %>
+
+    <%= f.label :name %>
+     <%= f.text_field :name %>
+
+
+    <%= f.label :floor_num %>
+     <%= f.select :floor_num,options_for_select(["1", "2", "3", "4", "5", "other"]), include_blank: true  %>
+
+
+    <%= f.label :user_id %>
+     <%= f.collection_select :user_id, User.all, :id, :username %>
+
+
+
+    <% end %>

@@ -3,6 +3,7 @@
 
  <%= f.label :name %>
   <%= f.text_field :name %>
+   
     <br></br>
 
   <%= f.label :category %>
@@ -14,21 +15,22 @@
         <option value="Grubmarket">Grubmarket</option>
         <option value="Other">Other</option>
       </select>
-     
-   
+
     <br></br>
 
     <%= f.label :description %>
   <%= f.text_field :description %>
+  
   <br></br>
 
   <%= f.label :building %>
    <%= f.select :building,options_for_select(["Fine Arts", "Gas Tower", "La Brea", "Hollywood", "Grubmarket", "other"]), include_blank: true  %>
+ 
   <br></br>
  
-
   <%= f.label :floor_num %>
   <%= f.select :floor_num,options_for_select(["1", "2", "3", "4", "5", "other"]), include_blank: true  %>
+  
   <br></br>
 <!--Find out how to change the floor numbers based on building selection. -->
 
@@ -42,9 +44,9 @@
     
   <br></br>
 
-
    <%= f.label :date_added %> <br>
   <%= f.date_field :date_added %>
+  
   <br></br>
 
   <%= f.submit%>
