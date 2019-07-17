@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
     end 
 
     def create 
-        @product = Product.new(product_params)
+        @product = current_user.created_products.build(product_params)
 
             if @product.valid?
                 @product.save
@@ -19,9 +19,7 @@ class ProductsController < ApplicationController
             render :show
 
             end 
-    
-        #@product = current_user.created_products.build(product_params)
-end 
+    end 
 
 def show 
     @product = Product.find_by(id: params[:id])
@@ -30,6 +28,6 @@ end
     private 
 
     def product_params
-        params.require(:product).permit(:name, :category, :description, :building, :floor_num, :in_stock, :date_added)
+        params.require(:product).permit(:name, :category, :description, :building, :in_stock, :date_added)
     end 
 end

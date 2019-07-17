@@ -12,6 +12,7 @@
         <option value="Printing Station">Printing Station</option>
         <option value="Bathroom">Bathroom</option>
         <option value="Honesty Market">Honesty Market</option>
+        <option value="Common Area">Common Area</option>
         <option value="Grubmarket">Grubmarket</option>
         <option value="Other">Other</option>
       </select>
@@ -23,20 +24,16 @@
   
   <br></br>
 
-  <%= f.label :building %>
-   <%= f.select :building,options_for_select(["Fine Arts", "Gas Tower", "La Brea", "Hollywood", "Grubmarket", "other"]), include_blank: true  %>
+  <%= f.label :building_id %>
+   <%= f.select :building_id, options_for_select(["Fine Arts", "Gas Tower", "La Brea", "Hollywood", "Promenade", "other"]), include_blank: true  %>
  
-  <br></br>
- 
-  <%= f.label :floor_num %>
-  <%= f.select :floor_num,options_for_select(["1", "2", "3", "4", "5", "other"]), include_blank: true  %>
   
   <br></br>
 <!--Find out how to change the floor numbers based on building selection. -->
 
  <%= f.label :in_stock %> <br>
-  <input type="checkbox" name="Yes" value="Yes"> I need more items!<br>
-  <input type="checkbox" name="NO" value="NO"> We are good with items this week!
+  <input type="checkbox" name="Yes" value="Yes"> I need more supplies!<br>
+  <input type="checkbox" name="NO" value="NO"> We are good with supplies this week!
   <p>How many do you need?</p>
   <input type="number" name="quantity" min="1" max="100"><br>
   <input type="checkbox" name="Each" value="Each"> Each<br>

@@ -19,6 +19,12 @@ rails g resource Floor name floor_num:integer building:belongs_to
 rails g resource Product name cateogory floor_num:integer in_stock:integer description:text date_added:datetime user:belongs_to floor:belongs_to
 rails g resource User username email building:belongs_to
 
+CHANGE COLUMN NAME IN EXISTING TABLE 
+1. rails g migration ChangeColumnNameFromCateogoryToCategory
+2. rename_column :table_name, :old_column, :new_column
+3.  rails db:migrate
+
+
 
 ADD A REFERENCE COLUMN TO AN EXISTING TABLE 
 1. rails g migration AddBuildingIdToProducts building:references
