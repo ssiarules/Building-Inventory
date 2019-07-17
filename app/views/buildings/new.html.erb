@@ -16,6 +16,63 @@
     <%= f.label :user_id %>
      <%= f.collection_select :user_id, User.all, :id, :username %>
 
+     <%= f.submit %>
+
+     <br></br>
+
+<h3> Or create a new product for your Building!</h3>
+<%= f.fields_for :product do |p| %>
+
+  <%= p.label :name %>
+  <%= p.text_field :name %>
+   
+    <br></br>
+
+  <%= p.label :category %>
+   <select>
+        <option value="Kitchen">Kitchen</option>
+        <option value="Printing Station">Printing Station</option>
+        <option value="Bathroom">Bathroom</option>
+        <option value="Honesty Market">Honesty Market</option>
+        <option value="Grubmarket">Grubmarket</option>
+        <option value="Other">Other</option>
+      </select>
+
+    <br></br>
+
+    <%= p.label :description %>
+  <%= p.text_field :description %>
+  
+  <br></br>
+
+  <%= p.label :building %>
+   <%= p.select :building,options_for_select(["Fine Arts", "Gas Tower", "La Brea", "Hollywood", "Grubmarket", "other"]), include_blank: true  %>
+ 
+  <br></br>
+ 
+  <%= p.label :floor_num %>
+  <%= p.select :floor_num,options_for_select(["1", "2", "3", "4", "5", "other"]), include_blank: true  %>
+  
+  <br></br>
+
+ <%= p.label :in_stock %> <br>
+  <input type="checkbox" name="Yes" value="Yes"> I need more items!<br>
+  <input type="checkbox" name="NO" value="NO"> We are good with items this week!
+  <p>How many do you need?</p>
+  <input type="number" name="quantity" min="1" max="100"><br>
+  <input type="checkbox" name="Each" value="Each"> Each<br>
+  <input type="checkbox" name="Box" value="Box"> Box
+    
+  <br></br>
+
+   <%= p.label :date_added %> <br>
+  <%= p.date_field :date_added %>
+  
+  <br></br>
+ 
+ <% end %>
 
 
-    <% end %>
+ <%= f.submit "New Building Product" %>
+
+  <% end %>

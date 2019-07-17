@@ -14,12 +14,10 @@
      <% if logged_in? %>
       <%= link_to 'Logout', '/logout', method: :delete%> <!--This will add logout to every page -->
       <%= link_to 'My Building', buildings_path%>
-      <%= link_to 'Add a Floor', new_floor_path %>
       <%= link_to 'Add a Product', new_product_path %>
       <%= link_to 'All Products', products_path %>
-      <%= link_to 'Add a Building', new_building_path %>
     <% else %>
-      <%= link_to 'Log In', login_path %>
+     
     <% end %>
 
        

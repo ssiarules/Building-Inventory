@@ -1,11 +1,35 @@
+Sunday 7/14/2019 
+- User can sign up / login 
+- User can create a new building 
+- User can create a new product
+- User can edit other users products 
+- User can edit other users products through buildings  
+
+User 
+
+Building 
+
+Products 
+
+Floors 
+
+
 rails g resource Building name floor_num:integer
 rails g resource Floor name floor_num:integer building:belongs_to
 rails g resource Product name cateogory floor_num:integer in_stock:integer description:text date_added:datetime user:belongs_to floor:belongs_to
 rails g resource User username email building:belongs_to
 
 
+ADD A REFERENCE COLUMN TO AN EXISTING TABLE 
+1. rails g migration AddBuildingIdToProducts building:references
+
+REMOVE A COLUMN FROM A TABLE 
+1. rails generate migration remove_COLUMNNAME_from_TABLENAME COLUMNNAME:DATATYPE 
+rails generate migration remove_date_from_buildings date:date
+- 
+ADD A NEW COLUMN TO AN EXISTING TABLE
 add new column to an existing table 
-1. generate a new migration - rails g migration add_building_to_products building:string
+1. generate a new migration - rails g migration add_building_id_to_products building_id:integer
 2. manual add the change column inside the product table migration.
 
 Concerns:

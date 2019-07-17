@@ -10,39 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_05_084818) do
+ActiveRecord::Schema.define(version: 2019_07_17_005557) do
 
   create_table "buildings", force: :cascade do |t|
     t.string "name"
-    t.integer "floor_num"
-    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.date "date"
-  end
-
-  create_table "floors", force: :cascade do |t|
-    t.string "name"
-    t.integer "floor_num"
-    t.integer "building_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["building_id"], name: "index_floors_on_building_id"
   end
 
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.string "cateogory"
-    t.integer "floor_num"
     t.integer "in_stock"
     t.text "description"
     t.datetime "date_added"
     t.integer "user_id"
-    t.integer "floor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "building"
-    t.index ["floor_id"], name: "index_products_on_floor_id"
+    t.integer "building_id"
+    t.index ["building_id"], name: "index_products_on_building_id"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
