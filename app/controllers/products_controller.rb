@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
 
     def new 
         @product = Product.new
+        @product.build_building
 
     end 
 
@@ -21,13 +22,17 @@ class ProductsController < ApplicationController
             end 
     end 
 
+#def show 
+   #@product = Product.find_by(id: params[:id])
+#end 
+
 def show 
-    @product = Product.find_by(id: params[:id])
+    @product = Product.find(params[:id])
 end 
 
     private 
 
     def product_params
-        params.require(:product).permit(:name, :category, :description, :building, :in_stock, :date_added)
+        params.require(:product).permit(:name, :category, :description, :date_added, :building_id, building_attributes: [:name, :id])
     end 
 end

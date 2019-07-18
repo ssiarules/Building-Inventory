@@ -13,16 +13,16 @@ class BuildingsController < ApplicationController
             if @building.valid?
                 @building.save
                 session[:building_id] = @building.id 
-                redirect_to building_path(@building)
+                redirect_to products_new_path(@product)
             else 
             render :show
-
+            #building_path(@building)
             end 
     end 
 
 
     def building_params
-        params.require(:building).permit(:name, :floor_num, :date, :user_id )
+        params.require(:building).permit(:name)
     end 
   
 end
