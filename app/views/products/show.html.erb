@@ -3,13 +3,11 @@
 
 <p>
 
-<%= @product.category %>
+<%= @product.category %> <br>
 
-<%= @product.description %>
+<%= @product.description %> <br>
 
-<%= @product.building %>
+<%= @product.building.name %> <br>
 
-<%= @product.in_stock %>
-
-<%= @product.date_added %>
+<%= @product.date_added.strftime("%m-%d-%y") %> <br>
 </p>

@@ -9,7 +9,7 @@ class BuildingsController < ApplicationController
     end 
     def create 
         @building = Building.new(building_params)
-
+        binding.pry
             if @building.valid?
                 @building.save
                 session[:building_id] = @building.id 

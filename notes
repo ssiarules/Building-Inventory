@@ -3,21 +3,6 @@ CONCERNS
 
 
 
-Sunday 7/14/2019 
-- User can sign up / login 
-- User can create a new building 
-- User can create a new product
-- User can edit other users products 
-- User can edit other users products through buildings  
-
-User 
-
-Building 
-
-Products 
-
-Floors 
-
 
 rails g resource Building name floor_num:integer
 rails g resource Floor name floor_num:integer building:belongs_to
@@ -29,7 +14,11 @@ CHANGE COLUMN NAME IN EXISTING TABLE
 2. rename_column :table_name, :old_column, :new_column
 3.  rails db:migrate
 
-
+CREATING DATA FOR BUILDING IN THE BACK END. 
+1. Rails C 
+2. Run Builing.all (To see if I have any data)
+3. Building.create(name:"Fine Arts")
+4. If Building ID is empty it's because I haven't saved it in my database. so I will have to review my create action in my building controller 
 
 ADD A REFERENCE COLUMN TO AN EXISTING TABLE 
 1. rails g migration AddBuildingIdToProducts building:references

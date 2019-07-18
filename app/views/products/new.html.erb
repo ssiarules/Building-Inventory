@@ -2,26 +2,18 @@
 
 <ul>
 
-<%= fields_for @product do |f| %>
-
+<%= form_for @product do |f| %>
 
   <%= f.label :name %>
   <%= f.text_field :name %>
-  <%= f.label :category %>
-   <select>
-        <option value="Kitchen">Kitchen</option>
-        <option value="Printing Station">Printing Station</option>
-        <option value="Bathroom">Bathroom</option>
-        <option value="Honesty Market">Honesty Market</option>
-        <option value="Common Area">Common Area</option>
-        <option value="Grubmarket">Grubmarket</option>
-        <option value="Other">Other</option>
-      </select>
 
+
+  <%= f.select "category", ["Kitchen", "Printing Station", "Bathroom", "Honesty Market", "Common Area", "Grubmarket", "Other"], prompt: true  %>
   <%= f.label :description %>
   <%= f.text_field :description %>
   <%= f.label :building_id %>
-  <%= f.collection_select :building_id, Building.all, :id, :name %>
+  <%= f.collection_select :building_id, Building.all, :id, :name, prompt: true  %>
+
   
  <!--F <%= f.select :building_id, options_for_select(["Fine Arts", "Gas Tower", "La Brea", "Hollywood", "Promenade", "other"]), include_blank: true  %>  -->
 

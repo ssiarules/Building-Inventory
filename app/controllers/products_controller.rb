@@ -10,8 +10,9 @@ class ProductsController < ApplicationController
     end 
 
     def create 
-        @product = current_user.created_products.build(product_params)
+        @product = current_user.products.new(product_params)
 
+       
             if @product.valid?
                 @product.save
                 session[:product_id] = @product.id 
@@ -33,6 +34,6 @@ end
     private 
 
     def product_params
-        params.require(:product).permit(:name, :category, :description, :date_added, :building_id, building_attributes: [:name, :id])
+        params.require(:product).permit(:name, :category, :description, :date_added, :building_id, building_attributes: [:name])
     end 
 end
