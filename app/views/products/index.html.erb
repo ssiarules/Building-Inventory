@@ -1,3 +1,20 @@
+<h1>All Products</h1>
 
+<ul>
+<%  @products.each do |product| %>
+<li>
+  <strong><%= product.name %></strong> -
+  <%=product.cateogry %>  -
+  <%=product.description %>
+  <%=product.date_added %>
+  
+  <%= link_to "See all building products", product_buildings_path(product)%> |
+  <%= link_to "Add a new building product", new_product_building_path(product)%> | <!--nested new route -->
+  <%= product.buildings.size %>
+
+</li>
+
+<% end %>
+</ul>
 
 

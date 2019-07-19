@@ -5,14 +5,13 @@ class ProductsController < ApplicationController
 
     def new 
         @product = Product.new
-        @product.build_building
+        @product.build_building #belongs_to relationship for the nested building in product form
 
     end 
 
     def create 
         @product = current_user.products.new(product_params)
-
-       
+        binding.pry
             if @product.valid?
                 @product.save
                 session[:product_id] = @product.id 

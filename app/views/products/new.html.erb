@@ -1,4 +1,4 @@
-<h1>Add a New Product Item</h1>
+<h1>Add A New Product Item</h1>
 
 <ul>
 
@@ -18,37 +18,30 @@
  <!--F <%= f.select :building_id, options_for_select(["Fine Arts", "Gas Tower", "La Brea", "Hollywood", "Promenade", "other"]), include_blank: true  %>  -->
 
 <!--Find out how to change the floor numbers based on building selection. -->
-      <br> 
-      <br>
+      <br></br>
   <input type="checkbox" name="Yes" value="Yes"> I need more supplies!
   <input type="checkbox" name="NO" value="NO"> We are good with supplies this week!
   
-      <br> 
-      <br>
+      <br></br>
   
 <div> How many do you need? </div>
 <input type="number" name="quantity" min="1" max="100">
-     <br> 
-      <br>
+     <br></br>
   <input type="checkbox" name="Each" value="Each"> Each
   <input type="checkbox" name="Box" value="Box"> Box
      
-    <br>
-    <br>
+    <br></br>
  <div> <%= f.label :date_added %> :<div>
-  <%= f.date_field :date_added %>
+ <%= f.date_field :date_added %>
 
-
- 
- <h3>If building not listed please create a building!</h3>
+<h3>If building not listed please create a building!</h3>
     <%= f.fields_for :building do |building|%>
       <%= building.label :name %>
       <%= building.text_field :name %>
       <% end %>
-  
     
- <br>
- <br>
+    <br></br>
+  
   <%= f.submit%>
 
 <% end %>

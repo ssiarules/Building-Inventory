@@ -9,12 +9,17 @@ rails g resource Floor name floor_num:integer building:belongs_to
 rails g resource Product name cateogory floor_num:integer in_stock:integer description:text date_added:datetime user:belongs_to floor:belongs_to
 rails g resource User username email building:belongs_to
 
+
+
+
 CHANGE COLUMN NAME IN EXISTING TABLE 
 1. rails g migration ChangeColumnNameFromCateogoryToCategory
 2. rename_column :table_name, :old_column, :new_column
 3.  rails db:migrate
 
-CREATING DATA FOR BUILDING IN THE BACK END. 
+CREATING DATA FOR BUILDING IN THE BACK END IN MIGRATE/SEEDS.RB FILE. 
+
+CREATING DATA FOR BUILDING IN THE BACK END MANUALLY. 
 1. Rails C 
 2. Run Builing.all (To see if I have any data)
 3. Building.create(name:"Fine Arts")
@@ -26,6 +31,8 @@ ADD A REFERENCE COLUMN TO AN EXISTING TABLE
 REMOVE A COLUMN FROM A TABLE 
 1. rails generate migration remove_COLUMNNAME_from_TABLENAME COLUMNNAME:DATATYPE 
 rails generate migration remove_date_from_buildings date:date
+
+rails generate migration remove_in_stock_from_Products in_stock:string
 - 
 ADD A NEW COLUMN TO AN EXISTING TABLE
 add new column to an existing table 
