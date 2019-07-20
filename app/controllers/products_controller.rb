@@ -1,5 +1,8 @@
 class ProductsController < ApplicationController
     def index 
+        @products = Product.all 
+        @user_products = current_user.products
+        #binding.pry
 
     end 
 
@@ -10,8 +13,8 @@ class ProductsController < ApplicationController
     end 
 
     def create 
-        @product = current_user.products.new(product_params)
-        binding.pry
+        @product = current_user.products.build(product_params)
+        #binding.pry
             if @product.valid?
                 @product.save
                 session[:product_id] = @product.id 

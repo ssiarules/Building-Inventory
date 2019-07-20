@@ -6,14 +6,16 @@ class BuildingsController < ApplicationController
             #load up only the buildings nested under that product 
         else
             #go to next step
-            @buildings = Buildings.all
+            @buildings = Building.all
        # @building = current_user.buildings #View buildings current_user is assigned to.
     end 
 end
 
     def new 
          if params[:product_id] && @product = Product.find_by_id(params[:product_id])
-            @buildings = @product.buildings.build #has_many
+            #binding.pry
+            @building = @product.buildings.build(building_params)#has_many
+           
         else
             @building = Building.new
             @building.build_product #belongs_to - nested form
@@ -21,7 +23,7 @@ end
 end
     
     def create 
-        if params[:product_id] && @product = Workout.find_by_id(params[:product_id])
+        if params[:product_id] && @product = Product.find_by_id(params[:product_id])
             @building = @product.buildings.build(building_params)
            else
             @building = Building.new(building_params)

@@ -3,18 +3,27 @@
 <ul>
 <%  @products.each do |product| %>
 <li>
-  <strong><%= product.name %></strong> -
-  <%=product.cateogry %>  -
+  <strong><%= product.name %></strong> 
+  <%=product.category %>  
   <%=product.description %>
   <%=product.date_added %>
   
   <%= link_to "See all building products", product_buildings_path(product)%> |
   <%= link_to "Add a new building product", new_product_building_path(product)%> | <!--nested new route -->
-  <%= product.buildings.size %>
+  
 
 </li>
 
 <% end %>
 </ul>
+user products: 
 
+ <% @user_products.each do |p| %>
+    <strong><%= p.name %></strong> 
+    <%= p.category %>  
+    <%= p.description %>
+    <%= p.date_added %>
+  
+
+ <% end %>
 
