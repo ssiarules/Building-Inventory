@@ -15,12 +15,13 @@
       <%= link_to 'Logout', '/logout', method: :delete%> <!--This will add logout to every page -->
       <%= link_to 'My Building', buildings_path%>
       <%= link_to 'Create a new Building', new_building_path %>
-      <%= link_to 'My Product', products_path, class:'button' %>
       <%= link_to 'Create a new Product', new_product_path %>
-      <%= link_to 'All Products', products_path %> 
-      
-    <% else %>
+      <%= link_to 'My Products', products_path %> 
+
+      <% flash.each do |key, value| %>
+      <h2><div class="alert alert-<%= key %>"><%= value %></div></h2>
      
+      <% end %>
     <% end %>
 
        
