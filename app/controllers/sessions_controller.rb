@@ -21,9 +21,29 @@ class SessionsController < ApplicationController
        end  
     end 
 
+    def ghreate
+        @user = User.find_or_create_by(uid: auth['uid']) do |u| # finding a user already log into facebook or creating a new user
+            u.username = auth['info']['username']
+            u.email = auth['info']['email']
+            u.password = auth['uid'] #secure random Hex
+          end
+       
+          session[:user_id] = @user.id #log user in
+       
+          redirect_to 'session/index'
+        end
+
     def destroy 
         session.clear #clear the session 
         redirect_to root_path #redirect the user back to the main page after logging out 
     end 
+
+    private
+
+    def auth
+    request.env['omniauth.auth']
+    end
+    #The private method is essentially bringing in the callback request, so it's going to contain 
+        #all the information about the callback request and we'll just access it using auth
 
 end

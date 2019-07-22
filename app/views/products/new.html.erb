@@ -1,5 +1,10 @@
 <h1>Add A New Product Item</h1>
 
+<!-- <%= render partial: "layouts/errors", locals: { object: @product } %> -->
+<!--            partial: What folder to look into    
+                                          object refers to what we put in our partial error code 
+                                           @building refers to the object folder we are in. 
+                                           -->
 <ul>
 
 <%= form_for @product do |f| %>
@@ -35,7 +40,7 @@
  <%= f.date_field :date_added %>
 
 <h3>If building not listed please create a building!</h3>
-    <%= f.fields_for :building do |building|%>
+    <%= form_for :building do |building|%>
       <%= building.label :name %>
       <%= building.text_field :name %>
       <% end %>

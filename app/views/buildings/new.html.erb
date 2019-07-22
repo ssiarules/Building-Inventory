@@ -1,5 +1,11 @@
 <h1>Create A New Building</h1>
 
+<%= render partial: "layouts/errors", locals: { object: @building} %>
+<!--            partial: What folder to look into    
+                                          object refers to what we put in our partial error code 
+                                           @building refers to the object folder we are in. 
+                                           -->
+
 <%= form_for @building do |f| %>
 
     <%= f.label :name %>

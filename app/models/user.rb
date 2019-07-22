@@ -3,6 +3,16 @@ class User < ApplicationRecord
   has_many :products 
   has_many :buildings, through: :products
   has_secure_password
-  validates :username, :email, presence: true 
+  validates :username, :email, absence: true 
   validates :username, uniqueness: true
+
+  scope :current_user_belongs_to_more_buildings, -> { where(building: 'Fine Arts') }
+
+  def self.create_with_omniauth(auth)
+    create! do |user|
+      user.provider = auth["provider"]
+      user.uid = auth["uid"]
+      user.name = auth["info"]["name"]
+    end
+  end
 end

@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   post '/products/new', to: "products#new"
   post '/buildings/new', to: "buildings#new"
 
+
+  #omniauth callback
+  get '/auth/github/callback' => 'sessions#ghcreate'
+
   resources :users
   resources :products do 
     resources :buildings, only: [:index, :new, :create] #only use [:index, :new, :create] for nested. The only we will have the unshallow routes edit, show, delete, update is if we need to get the params hash, but we can already get it from the active record relationships so we don’t need the id and params hash.
