@@ -1,3 +1,6 @@
+
+
+
 CONCERNS
 1. After filling in a product my show page doesn't show products/id? 
 
@@ -55,3 +58,10 @@ rake db:schema:load
 User flow
 
 1.user creates account -> user show page -> create a link to  
+
+GITHUB_KEY=ff8c6997bbc1f85708fb
+
+GITHUB_SECRET=1fb57bf1737ef873d7c67246b40c73c099d9669c
+
+http://localhost:3000/auth/facebook/callback
+  https://0.0.0.0:3000/auth/facebook/callback

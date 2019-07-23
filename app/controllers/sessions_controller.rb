@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     end 
 
     def new 
-
+     
     end 
 
     def create
@@ -21,16 +21,17 @@ class SessionsController < ApplicationController
        end  
     end 
 
-    def ghreate
+
+    def omniauth_login
         @user = User.find_or_create_by(uid: auth['uid']) do |u| # finding a user already log into facebook or creating a new user
-            u.username = auth['info']['username']
+            u.name = auth['info']['name']
             u.email = auth['info']['email']
             u.password = auth['uid'] #secure random Hex
           end
        
           session[:user_id] = @user.id #log user in
        
-          redirect_to 'session/index'
+          redirect_to 'sessions/index'
         end
 
     def destroy 

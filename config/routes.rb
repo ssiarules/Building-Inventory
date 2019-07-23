@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root 'sessions#index'
 
+    #omniauth callback
+  get '/auth/facebook/callback', to: "sessions#omniauth_login"
+
 
   get '/login', to: "sessions#new"
   post '/login', to:"sessions#create"
@@ -14,8 +17,7 @@ Rails.application.routes.draw do
   post '/buildings/new', to: "buildings#new"
 
 
-  #omniauth callback
-  get '/auth/github/callback' => 'sessions#ghcreate'
+
 
   resources :users
   resources :products do 
