@@ -6,8 +6,6 @@ class ProductsController < ApplicationController
     def index 
         @products = Product.ordered
         @user_products = current_user.products.ordered 
-       
-        #binding.pry
     end 
 
     def new 
@@ -15,25 +13,8 @@ class ProductsController < ApplicationController
         @product.build_building #belongs_to relationship for the nested building in product form
     end 
 
-    #def new 
-        #if params[:building_id] && @building = Building.find_by_id(params[:building_id])
-            #binding.pry
-           # @product.build_building #belongs_to - nested form
-           # @product = @building.products.build(product_params)#has_many
-        #else
-          # @product = Product.new
-           
-        #end 
-    #end
-
     def create 
-        #if params[:building_id] && @product = Product.new(product_params)  && @building = Building.find_by_id(params[:building_id])
-           @product = current_user.products.build(product_params)
-        #else 
-          # @product = Product.new
-       #end 
-        #binding.pry
-         
+        @product = current_user.products.build(product_params)
         if @product.valid?
             @product.save
             flash[:success] = "Product Successfully Created!"
@@ -44,11 +25,6 @@ class ProductsController < ApplicationController
         end 
         
     end 
-
-    
-
-
-
 
     def show 
         @product = Product.find(params[:id])
