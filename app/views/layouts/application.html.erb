@@ -12,11 +12,12 @@
   <body>
 
      <% if logged_in? %>
-      <%= link_to 'Logout', '/logout', method: :delete%> <!--This will add logout to every page -->
+      <%= link_to 'Home', sessions_path%>
       <%= link_to 'My Building', buildings_path%>
       <%= link_to 'Create a new Building', new_building_path %>
       <%= link_to 'Create a new Product', new_product_path %>
       <%= link_to 'My Products', products_path %> 
+      <%= link_to 'Logout', '/logout', method: :delete%> <!--This will add logout to every page -->
 
       <% flash.each do |key, value| %>
       <h2><div class="alert alert-<%= key %>"><%= value %></div></h2>

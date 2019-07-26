@@ -6,6 +6,8 @@ class Product < ApplicationRecord
 
   validates_associated :building
 
+  scope :ordered, -> { order('created_at desc') }
+
   
 
 

@@ -1,10 +1,4 @@
 <h1>Add A New Product Item</h1>
-
-<!-- <%= render partial: "layouts/errors", locals: { object: @product } %> -->
-<!--            partial: What folder to look into    
-                                          object refers to what we put in our partial error code 
-                                           @building refers to the object folder we are in. 
-                                           -->
 <ul>
 
 <%= form_for @product do |f| %>
@@ -19,10 +13,6 @@
   <%= f.label :building_id %>
   <%= f.collection_select :building_id, Building.all, :id, :name, prompt: true  %>
 
-  
- <!--F <%= f.select :building_id, options_for_select(["Fine Arts", "Gas Tower", "La Brea", "Hollywood", "Promenade", "other"]), include_blank: true  %>  -->
-
-<!--Find out how to change the floor numbers based on building selection. -->
       <br></br>
   <input type="checkbox" name="Yes" value="Yes"> I need more supplies!
   <input type="checkbox" name="NO" value="NO"> We are good with supplies this week!
@@ -40,7 +30,7 @@
  <%= f.date_field :date_added %>
 
 <h3>If building not listed please create a building!</h3>
-    <%= form_for :building do |building|%>
+    <%= fields_for :building do |building|%>
       <%= building.label :name %>
       <%= building.text_field :name %>
       <% end %>

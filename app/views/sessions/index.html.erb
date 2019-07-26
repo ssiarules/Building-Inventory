@@ -1,15 +1,11 @@
 <h1>Welcome to Building Management Inventory System!</h1>
 
-<%= link_to "Log In", "/login" %> <br> <br>
+<h2><%= link_to "Log In", "/login" %></h2>
 
+<h2><%= link_to "Sign Up", "/signup" %></h2>
 
-<%= link_to "Sign Up", "/signup" %><br> <br>
-<% if session[:user_id] %>
-  <h1><%= @user.name %></h1>
-  <h2>Email: <%= @user.email %></h2>
-  <h2>Facebook UID: <%= @user.uid %></h2>
-  <img src="<%= @user.image %>">
-<% else %>
-  <%= link_to('Log in with Facebook!', '/auth/facebook') %>
-<% end %>
+<h2><%= link_to('Log in with Facebook!', '/auth/facebook') %></h2>
+
+<h2><%= link_to('Log in with Github!', '/auth/github') %></h2>
+
 

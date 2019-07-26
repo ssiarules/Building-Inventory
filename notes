@@ -63,5 +63,7 @@ GITHUB_KEY=ff8c6997bbc1f85708fb
 
 GITHUB_SECRET=1fb57bf1737ef873d7c67246b40c73c099d9669c
 
-http://localhost:3000/auth/facebook/callback
+https://localhost:3000/auth/facebook/callback
   https://0.0.0.0:3000/auth/facebook/callback
+
+  7/24/2019 commit - added omminautho, confirmed validation error messages"

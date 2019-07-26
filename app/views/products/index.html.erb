@@ -3,10 +3,12 @@
 <ul>
 <%  @user_products.each do |product| %>
 <li>
+  <%=product.created_at.strftime("%m/%d/%Y") %>
   <strong><%= product.name %></strong> 
+  <%=product.building.name %>
   <%=product.category %>  
   <%=product.description %>
-  <%=product.date_added %>
+  
   
   <%= link_to " My Building Products ", product_buildings_path(product)%> <!--nested new route -->
 
@@ -19,10 +21,12 @@
 <ul>
 <%  @products.each do |product| %>
 <li>
+<%=product.created_at.strftime("%m/%d/%Y") %>
   <strong><%= product.name %></strong> 
+  <%=product.building.name %>
   <%=product.category %>  
   <%=product.description %>
-  <%=product.date_added%>
+  
   
   <%= link_to "My Building Products", product_buildings_path(product)%> <!--nested new route -->
 

@@ -2,7 +2,6 @@
 
 
 <p>
- 
 
 <%= @product.building_id %> <br>
 
@@ -12,5 +11,5 @@
 
 <%= @product.building.name %> <br>
 
-<%= @product.date_added %> <br>
+<%= @product.created_at.strftime("%m/%d/%Y") %> <br>
 </p>
