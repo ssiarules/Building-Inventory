@@ -12,10 +12,8 @@ class BuildingsController < ApplicationController
 
     def create 
             @building = current_user.buildings.build(building_params)
-        if  @building.valid?
-                @building.save
+        if  @building.save
                 flash[:success] = "Building Successfully Created!"
-                session[:building_id] = @building.id 
                 redirect_to building_path(@building)
         else 
             render :new
