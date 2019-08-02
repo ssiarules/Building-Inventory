@@ -6,9 +6,10 @@ class SessionsController < ApplicationController
     def new 
      
     end 
+    
 
     def create
-        #find the user 
+       
        @user = User.find_by(username: params[:user][:username]) 
 
        #if we find something & they have the right password

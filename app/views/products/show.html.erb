@@ -9,5 +9,5 @@
 
 <%= @product.building.name %> <br>
 
-<%= @product.created_at.strftime("%m/%d/%Y") %> <br>
+<%= @product.created_at.try(:strftime, ("%m/%d/%Y")) %> <br>
 </p>
