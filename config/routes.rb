@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get '/auth/github/callback', to: 'sessions#omniauth_create'
   get '/auth/facebook/callback', to: 'sessions#omniauth_create'
 
+  get '/buildings/', to: 'buildings#index'
+
 
   get '/auth/failure', to: 'sessions#index'
 

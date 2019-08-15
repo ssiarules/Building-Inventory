@@ -5,4 +5,7 @@ class Building < ApplicationRecord
    validates :name, presence: true
    validates :name, uniqueness: true
    accepts_nested_attributes_for :products
+
+   scope :ordered, -> { order('name desc') }
 end
+

@@ -1,6 +1,11 @@
 
 
 
+
+
+
+
+
 CONCERNS
 1. After filling in a product my show page doesn't show products/id? 
 
@@ -59,11 +64,24 @@ User flow
 
 1.user creates account -> user show page -> create a link to  
 
-GITHUB_KEY=ff8c6997bbc1f85708fb
-
-GITHUB_SECRET=1fb57bf1737ef873d7c67246b40c73c099d9669c
 
 https://localhost:3000/auth/facebook/callback
   https://0.0.0.0:3000/auth/facebook/callback
 
   7/24/2019 commit - added omminautho, confirmed validation error messages"
+
+  -write a scope method referencing building name and alpha order 
+    
+    This will go into Building model 
+       scope :ordered, -> { order('name desc') }
+    
+
+  -create a new route that will render this data 
+   get '/buildings/', to: 'buildings#index'
+
+   how to I render my scope methods? in my view 
+ 
+
+
+
+
