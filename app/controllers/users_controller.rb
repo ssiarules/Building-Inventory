@@ -2,16 +2,13 @@ class UsersController < ApplicationController
     def index 
        
     end 
-    
-     
-    
-    else  
+      
     def new 
         @user = User.new
     end 
 
     def create 
-        @user = User.new(user_params)
+        @user = User.new(user_params) #user_params is the info. user inputed. 
         if @user.save #if save fails it will return false, will only save if it is valid.
             session[:user_id] = @user.id   #add user to the sessions so we can remember them when they go to the next page. 
             redirect_to user_path(@user)

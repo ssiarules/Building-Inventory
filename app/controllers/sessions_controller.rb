@@ -9,10 +9,8 @@ class SessionsController < ApplicationController
     
 
     def create
-       
-       @user = User.find_by(username: params[:user][:username]) 
-
-       #if we find something & they have the right password
+        @user = User.find_by(username: params[:user][:username]) 
+            #if we find something & they have the right password
        if @user && @user.authenticate(params[:user][:password])
             session[:user_id] = @user.id #keep tracks of user sessions through pages.
             redirect_to user_path(@user) #redirect to another path

@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   root 'sessions#index'
 
+  get '/login', to: "sessions#new"
+  post '/login', to:"sessions#create"
+
+  get '/signup', to: "users#new"
+  post '/signup', to: "users#create"
+
     #omniauth callback
   
   get '/auth/github/callback', to: 'sessions#omniauth_create'
@@ -12,13 +18,11 @@ Rails.application.routes.draw do
   get '/auth/failure', to: 'sessions#index'
 
 
-  get '/login', to: "sessions#new"
-  post '/login', to:"sessions#create"
+  
 
   delete '/logout', to: "sessions#destroy"  #making a delete action, the logout clickable on the page
 
-  get '/signup', to: "users#new"
-  post '/signup', to: "users#create"
+
 
   post '/products/new', to: "products#new"
   post '/buildings/new', to: "buildings#new"

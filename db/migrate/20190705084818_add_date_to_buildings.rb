@@ -3,3 +3,4 @@ class AddDateToBuildings < ActiveRecord::Migration[5.2]
     add_column :buildings, :date, :date
   end
 end
+
