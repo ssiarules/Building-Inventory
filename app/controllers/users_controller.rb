@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 
     def show 
         @user = User.find(params[:id]) #if you don't include the first id: it will always return the first value user in the database created in your user/show page.  
+        render json: @user, status: 200
     end 
 
     private 

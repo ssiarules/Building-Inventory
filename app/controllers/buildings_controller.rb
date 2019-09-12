@@ -22,7 +22,10 @@ class BuildingsController < ApplicationController
 
     def show 
         @building = Building.find(params[:id])
-        @user_products = @building.products.ordered
+        render json: @building, status: 200
+
+        
+        #@user_products = @building.products.ordered
     end 
 
     def building_params
