@@ -21,6 +21,11 @@ class BuildingsController < ApplicationController
 
         render json: @building, status: 200 
     end 
+
+    def update
+        
+
+    end 
     
     
     

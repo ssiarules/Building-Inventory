@@ -3,6 +3,9 @@ class ProductsController < ApplicationController
     skip_before_action :verify_authenticity_token 
     #The authenticity token is designed so that you know your form is being submitted from your website. It is generated from the machine on which it runs with a unique identifier that only your machine can know, thus helping prevent cross-site request forgery attacks.
 
+    
+    
+    
     def index 
         @products = Product.ordered
         @user_products = current_user.products.ordered 
