@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get '/auth/facebook/callback', to: 'sessions#omniauth_create'
 
   get '/buildings/', to: 'buildings#index'
+  
+
 
 
   get '/auth/failure', to: 'sessions#index'
@@ -33,9 +35,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :products do 
-    resources :buildings, only: [:index, :new, :create] #only use [:index, :new, :create] for nested. The only we will have the unshallow routes edit, show, delete, update is if we need to get the params hash, but we can already get it from the active record relationships so we don’t need the id and params hash.
-                                                                      
-
+    resources :buildings, only: [:index, :new, :create] #only use [:index, :new, :create] for nested. The only we will have the unshallow routes edit, show, delete, update is if we need to get the params hash, but we can already get it from the active record relationships so we don’t need the id and params hash.                                                          
   end
   resources :buildings
   resources :sessions

@@ -1,10 +1,20 @@
 class BuildingsController < ApplicationController
     
-    def index
-        @buildings = Building.all
-
-        render json: @notes, status: 200
+    def index 
+        @buildings = Building.ordered
+        @user_buildings = current_user.buildings.ordered 
     end 
+   
+   
+   
+   
+    #def index
+       # @buildings = Building.all
+        #respond_to do |format|
+          #  format.html {render :index, layout: false}
+         #   format.json {render json: @posts}
+         # end
+    #end 
     
     
     #def index
@@ -14,16 +24,30 @@ class BuildingsController < ApplicationController
 
     def new
         @building = Building.new
+        respond_to do |format|
+            format.html {render :index, layout: false}
+            format.json {render json: @posts}
+          end
     end
 
     def create 
         @building = Building.create(building_params)
+        respond_to do |format|
+            format.html {render :index, layout: false}
+            format.json {render json: @posts}
+          end
 
         render json: @building, status: 200 
     end 
 
     def update
         
+        
+        respond_to do |format|
+            format.html {render :index, layout: false}
+            format.json {render json: @posts}
+          end
+
 
     end 
     
@@ -39,12 +63,13 @@ class BuildingsController < ApplicationController
         #end 
     #end 
 
+
+
     def show 
         @building = Building.find(params[:id])
         render json: @building, status: 200
-        #@user_products = @building.products.ordered
     end 
-
+    
     private 
     def building_params
         params.require(:building).permit(:name)
