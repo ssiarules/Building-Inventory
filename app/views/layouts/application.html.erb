@@ -12,22 +12,30 @@
   </head>
 
   <body>
-
-     <% if logged_in? %>
-      <%= link_to 'Home', sessions_path%>
-      <%= link_to 'My Building', buildings_path%>
-      <%= link_to 'Create a new Building', new_building_path %>
-      <%= link_to 'Create a new Product', new_product_path %>
-      <%= link_to 'My Products', products_path %> 
-      <%= link_to 'Logout', '/logout', method: :delete%> <!--This will add logout to every page -->
-
+<section class="section">
+    <div class="container">
+    <h1 class="title">
+      Johnson Joseph
+      </h1>
+  </div>
+  <div class="column">
+      <% if logged_in? %>
+      <%= link_to 'Home', sessions_path %> |
+      <%= link_to 'My Building', buildings_path %> |
+      <%= link_to 'Create a new Building', new_building_path %> |
+      <%= link_to 'Create a new Product', new_product_path %> |
+      <%= link_to 'My Products', products_path %> |
+      <%= link_to 'Logout', '/logout', method: :delete%> |
+      <hr>
+      <div id="flash_messages" class="flash_style">
       <% flash.each do |key, value| %>
+       <%= content_tag(:div, value, :class => "flash #{key}") %>
       <h2><div class="alert alert-<%= key %>"><%= value %></div></h2>
-     
-      <% end %>
-    <% end %>
-
-       
+  <% end %>
+</div>
+    <% end %>   
     <%= yield %>
+  </div>
+ </section>
   </body>
 </html>
