@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Building.create(name: " Rails/Javascript Building")
+Building.create(name: " eptember 25, Building")
+
+Products.create(building_id: 1, name: "September item ", category: "Saturday ", description: "Doing Rails/Javascript Project ", date_added: "9/15 " )
