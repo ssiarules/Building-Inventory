@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   get '/buildings/', to: 'buildings#index'
   
-
+  
 
 
   get '/auth/failure', to: 'sessions#index'
@@ -25,9 +25,8 @@ Rails.application.routes.draw do
   delete '/logout', to: "sessions#destroy"  #making a delete action, the logout clickable on the page
 
 
-
   post '/products/new', to: "products#new"
-  post '/buildings/new', to: "buildings#new"
+  post '/buildings/new', to: 'buildings#new'
 
   get '/auth/failure', to: "sessions/#index"
 

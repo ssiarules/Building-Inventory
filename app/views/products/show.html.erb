@@ -1,13 +1,19 @@
 <h1><%= @product.name %></h1>
 <p>
 
-<%= @product.building_id %> <br>
+    <%= @product.building_id %> <br>
 
-<%= @product.category %> <br>
+    <%= @product.category %> <br>
 
-<%= @product.description %> <br>
+    <%= @product.description %> <br>
 
-<%= @product.building.name %> <br>
-
-<%= @product.created_at.try(:strftime, ("%m/%d/%Y")) %> <br>
+    <%= @product.name %> <br>
+    
+    <%= @product.created_at.try(:strftime, ("%m/%d/%Y")) %> <br>
 </p>
+
+<div>
+     <p>
+      <a class="Product_list" href="/products"> Product List </a>
+    </p>
+</div>

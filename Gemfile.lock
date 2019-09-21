@@ -250,6 +250,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   chromedriver-helper
   coffee-rails (~> 4.2)
+  coffee-script-source (~> 1.12.2)
   dotenv-rails
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)

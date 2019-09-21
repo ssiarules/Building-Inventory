@@ -1,10 +1,10 @@
 <h1>My Buildings</h1>
 
 <div>
-<ul>
-<%   @building.each do |building| %>
+  <ul>
+    
+<%   @user_buildings.each do |building| %>
 <li>
-
     <strong><%= building.name %></strong> 
     <%= link_to "Add a new building", new_product_building_path(building)%> | <!--nested new route -->
   
