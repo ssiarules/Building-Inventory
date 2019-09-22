@@ -1,0 +1,17 @@
+<%= form_for @product do |f| %>
+	<p><%= f.label :name %></p>
+	<p><%= f.text_field :name %></p>
+	
+	<p><%= f.label :building_id %></p>
+	<p><%= f.text_area :building_id %></p>
+
+    <p><%= f.label :category%></p>
+	<p><%= f.text_area :category %></p>
+
+    <p><%= f.label :description %></p>
+	<p><%= f.text_area :description %></p>
+
+	<%= f.submit %>
+<% end %>
+
+

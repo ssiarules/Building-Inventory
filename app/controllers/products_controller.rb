@@ -59,7 +59,7 @@ end
 
 def update 
     @product = Product.find(params["id"])
-    if @product(product_params)
+    if @product.update(product_params)
         redirect_to product_path(@product)
     else 
             render :edit

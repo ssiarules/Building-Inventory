@@ -1,3 +1,5 @@
+<%= link_to 'Home', sessions_path %>
+
 <h1><%= @product.name %></h1>
 <p>
 
@@ -7,7 +9,7 @@
 
     <%= @product.description %> <br>
 
-    <%= @product.name %> <br>
+   
     
     <%= @product.created_at.try(:strftime, ("%m/%d/%Y")) %> <br>
 </p>
