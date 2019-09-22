@@ -1,6 +1,15 @@
+<%= link_to 'Home', sessions_path %>
+
 <h1><%= @building.name%></h1>
 
 <p>
 
     <%= link_to "Building Name", building_path(@building), :class => "building_names" %>
 </p>
+
+<p><%= link_to "Edit", edit_building_path(@building) %></p>
+<p><%= link_to "Delete", building_path(@building),
+                            method: :delete, 
+                            data: { confirm: 'Are Your Sure?'} %>
+                         
+                        

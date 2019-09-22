@@ -3,6 +3,10 @@ class BuildingsController < ApplicationController
     def index 
         @buildings = Building.ordered
         @user_buildings = current_user.buildings.ordered
+        respond_to do |format|
+            format.html {render :index, layout: false}
+            format.json {render json: @buildings}
+          end
     end 
    
    
@@ -22,10 +26,7 @@ class BuildingsController < ApplicationController
 
     def new
         @building = Building.new
-        respond_to do |format|
-            format.html {render :index, layout: false}
-            format.json {render json: @buildings}
-          end
+        
     end
 
     #def create 
@@ -38,25 +39,15 @@ class BuildingsController < ApplicationController
        # render json: @building, status: 200 
    # end 
 
-    def update
 
-        respond_to do |format|
-            format.html {render :index, layout: false}
-            format.json {render json: @buildings}
-          end
-
-
-    end 
-    
-    
-    
     def create 
-            @user_building = current_user.buildings.build(building_params)
+            @building = current_user.buildings.build(building_params)
         if  @building.save
              flash[:success] = "Building Successfully Created!"
              respond_to do |f|
-                f.html {redirect_to building_path}
+                f.html {redirect_to buildings_path}
                 f.json {render json: @buildings}
+             end 
         else 
             render :new
         end 
@@ -81,17 +72,21 @@ end
 end 
 
 def destroy 
-    @building = Building.find(params["id"])
-    @building.delete
-    redirect_to buildings_path
+    @building = Building.find(params[:id])
+    @building.destroy
+    redirect_to buildings_path, notice: " Delete Success"
+   
 end 
 
 
+def show 
+    @building = Building.find(params[:id])
+    respond_to do |f|
+        f.html {render :show, layout: false}
+        f.json {render json: @building }
+    end
+end 
 
-    def show 
-        @building = Building.find(params[:id])
-        render json: @building, status: 200
-    end 
     
     private 
     def building_params

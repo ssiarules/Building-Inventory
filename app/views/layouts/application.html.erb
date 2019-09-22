@@ -35,6 +35,11 @@
        <%= content_tag(:div, value, :class => "flash #{key}") %>
       <h2><div class="alert alert-<%= key %>"><%= value %></div></h2>
   <% end %>
+  
+  <% flash.each do |name, msg| -%>
+     <%= content_tag :div, msg, class: name %>
+<% end -%>
+
 </div>
     <% end %>   
     <%= yield %>

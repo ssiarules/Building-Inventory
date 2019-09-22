@@ -37,7 +37,7 @@ class ProductsController < ApplicationController
             #redirect_to product_path(@product)
         end 
           else 
-            render :show
+            render :new
         end      
     end 
 
@@ -50,7 +50,7 @@ class ProductsController < ApplicationController
     end 
 
     def edit 
-        @product = Product.find(params["id"])
+        @product = Product.find(params[:id])
         respond_to do |f|
             f.html {render :edit}
             f.json {render json: @product}
@@ -67,8 +67,8 @@ end
 end 
 
 def destroy 
-    @product = Product.find(params["id"])
-    @product.delete
+    @product = Product.find(params['id'])
+    @product.destroy
     redirect_to products_path
 end 
 

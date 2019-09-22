@@ -1,34 +1,31 @@
 Rails.application.routes.draw do
   root 'sessions#index'
 
+  #LOGINS 
   get '/login', to: "sessions#new"
   post '/login', to:"sessions#create"
+  delete '/logout', to: "sessions#destroy"  #making a delete action, the logout clickable on the page
 
+  #SIGNUPS 
   get '/signup', to: "users#new"
   post '/signup', to: "users#create"
 
-    #omniauth callback
-  
+
+    #OMNIAUTH CALLBACKS 
   get '/auth/github/callback', to: 'sessions#omniauth_create'
   get '/auth/facebook/callback', to: 'sessions#omniauth_create'
-
-  get '/buildings/', to: 'buildings#index'
-  
-  
-
-
   get '/auth/failure', to: 'sessions#index'
-
-  
-
-  delete '/logout', to: "sessions#destroy"  #making a delete action, the logout clickable on the page
-
-
-  post '/products/new', to: "products#new"
-  post '/buildings/new', to: 'buildings#new'
-
   get '/auth/failure', to: "sessions/#index"
 
+  #BUILDINGS 
+  get '/buildings/', to: 'buildings#index'
+  post '/buildings/new', to: 'buildings#new'
+  delete '/buildings/id', to: 'buildings#destroy'
+  
+  #PRODUCTS  
+  get '/products/id', to: 'products#edit'
+  post '/products/new', to: "products#new"
+  delete '/products/id', to: 'products#destroy'
   
 
 
