@@ -30,8 +30,7 @@ class UsersController < ApplicationController
         
         respond_to do |format|
             format.html {render :show, layout: false}
-            format.json {render json: @users}
-            
+            format.json {render json: @users}   
           end
     end 
 
