@@ -54,25 +54,37 @@ class BuildingsController < ApplicationController
             @user_building = current_user.buildings.build(building_params)
         if  @building.save
              flash[:success] = "Building Successfully Created!"
-              redirect_to building_path(@building)
+             respond_to do |f|
+                f.html {redirect_to building_path}
+                f.json {render json: @buildings}
         else 
             render :new
         end 
     end 
 
-    def create 
-        @product = current_user.products.build(product_params)
-        if  @product.save
-            respond_to do |f|
-                f.html {redirect_to products_path}
-                f.json {render json: @products}
-            end 
-            flash[:success] = "Product Successfully Created!"
-            #redirect_to product_path(@product)
-          else 
-            render :show
-        end      
-    end
+
+    def edit 
+        @building = Building.find(params["id"])
+        respond_to do |f|
+            f.html {render :edit}
+            f.json {render json: @building}
+    end 
+end 
+
+    def update 
+         @building = Building.find(params["id"])
+            if @building.update(building_params)
+        redirect_to building_path(@building)
+    else 
+            render :edit
+    end 
+end 
+
+def destroy 
+    @building = Building.find(params["id"])
+    @building.delete
+    redirect_to buildings_path
+end 
 
 
 
@@ -85,8 +97,4 @@ class BuildingsController < ApplicationController
     def building_params
         params.require(:building).permit(:name)
     end 
-
-    
-   
-  
 end

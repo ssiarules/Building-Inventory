@@ -31,7 +31,7 @@ class ProductsController < ApplicationController
         if  @product.save
             flash[:success] = "Product Successfully Created!"
             respond_to do |f|
-                f.html {redirect_to products_path }
+                f.html {redirect_to product_path }
                 f.json {render json: @products}
                 
             #redirect_to product_path(@product)
@@ -57,9 +57,9 @@ class ProductsController < ApplicationController
     end 
 end 
 
-def update 
-    @product = Product.find(params["id"])
-    if @product.update(product_params)
+    def update 
+         @product = Product.find(params["id"])
+            if @product.update(product_params)
         redirect_to product_path(@product)
     else 
             render :edit
