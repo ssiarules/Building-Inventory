@@ -19,7 +19,6 @@ Rails.application.routes.draw do
 
   get '/auth/failure', to: 'sessions#index'
 
-
   
 
   delete '/logout', to: "sessions#destroy"  #making a delete action, the logout clickable on the page
@@ -30,6 +29,7 @@ Rails.application.routes.draw do
 
   get '/auth/failure', to: "sessions/#index"
 
+  
 
 
   resources :users

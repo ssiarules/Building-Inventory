@@ -40,8 +40,13 @@
   <%= f.submit%>
 
   <p>
-     
-    <a class="product_list" href='#' onclick="listProduct" > Product List </a>   
+  <button id='productList-data'>Get Product List</button>
+			<div id='ajax-productList'>[List...]</div>
+      
+			<br>
+			<br>
+    
+    <a class="product_list" href='http://localhost:3000/products' onclick="listProduct()">Product List</a>   
 </p>
 
 <% end %>

@@ -44,17 +44,42 @@ class ProductsController < ApplicationController
     def show 
         @product = Product.find(params[:id])
         respond_to do |f|
-			f.html {render :show}
+			f.html {render :show, layout: false}
 			f.json {render json: @product }
 		end
     end 
+
+    def edit 
+        @product = Product.find(params["id"])
+        respond_to do |f|
+            f.html {render :edit}
+            f.json {render json: @product}
+    end 
+end 
+
+def update 
+    @product = Product.find(params["id"])
+    if @product(product_params)
+        redirect_to product_path(@product)
+    else 
+            render :edit
+    end 
+end 
+
+def destroy 
+    @product = Product.find(params["id"])
+    @product.delete
+    redirect_to products_path
+end 
 
     private 
 
     def product_params
         params.require(:product).permit(:name, :category, :description, :date_added, :building_product, :building_id, building_attributes: [:name])
     end 
+
 end
+
 
     
 
