@@ -17,19 +17,22 @@ $(function listProduct () {
          })
     }
         function getProductList() {
-            fetch("http://localhost:3000/products")
-
-            .then(function(response) {
-                return response.json();
-            })
-            .then(function(data){
-                console.log(data);
-                 debugger
-            });
-        }
+            fetch("http://localhost:3000/products.json")
+             .then(response => response.json()) //arrow functions
+            .then(json =>console.log({json})
+            );
+            //debugger
+            };
             
-            //.then(res => res.json()) //arrow functions
-           // .then(json => console.log("The data is: ", json));
+           
             
         //};
+
+         //.then(function(response) {
+              //  return response.json();
+           // })
+           // .then(function(data){
+               // console.log(data);
+                // debugger
+            //});
         

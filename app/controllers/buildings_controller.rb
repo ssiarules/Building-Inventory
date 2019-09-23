@@ -8,36 +8,11 @@ class BuildingsController < ApplicationController
             format.json {render json: @buildings}
           end
     end 
-   
-   
-    #def index
-       # @buildings = Building.all
-        #respond_to do |format|
-          #  format.html {render :index, layout: false}
-         #   format.json {render json: @posts}
-         # end
-    #end 
-    
-    
-    #def index
-      #  @buildings = Building.all
-       # @user_buildings = current_user.buildings
-    # end
 
     def new
         @building = Building.new
         
     end
-
-    #def create 
-       # @building = Building.create(building_params)
-       # respond_to do |format|
-         #   format.html {render :index, layout: false}
-          #format.json {render json: @buildings}
-          #end
-
-       # render json: @building, status: 200 
-   # end 
 
 
     def create 

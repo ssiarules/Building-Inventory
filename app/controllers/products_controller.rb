@@ -13,14 +13,6 @@ class ProductsController < ApplicationController
       end
 
 
-
-    #def index 
-       # @products = Product.ordered
-        #@user_products = current_user.products.ordered 
-
-       # render :layout => false
-    #end 
-
     def new 
         @product = Product.new
         @product.build_building #belongs_to relationship for the nested building in product form
@@ -33,8 +25,6 @@ class ProductsController < ApplicationController
             respond_to do |f|
                 f.html {redirect_to product_path }
                 f.json {render json: @products}
-                
-            #redirect_to product_path(@product)
         end 
           else 
             render :new
