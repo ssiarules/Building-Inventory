@@ -1,7 +1,7 @@
 <h1>Add A New Product Item</h1>
 <ul>
 
-<%= form_for @product do |f| %>
+<%= form_for @product, id:'productForm' do |f| %>
 
   <%= f.label :name %>
   <%= f.text_field :name %>
@@ -14,8 +14,8 @@
   <%= f.collection_select :building_id, Building.all, :id, :name, prompt: true  %>
 
       <br></br>
-  <input type="checkbox" name="Yes" value="Yes"> I need more supplies!
-  <input type="checkbox" name="NO" value="NO"> We are good with supplies this week!
+  <input id="checkbox_yes" type="checkbox" name="Yes" value="Yes"> I need more supplies!
+  <input id="checkbox_no" type="checkbox" name="NO" value="NO"> We are good with supplies this week!
   
       <br></br>
   
@@ -39,15 +39,17 @@
   
   <%= f.submit%>
 
-  <p>
+
+  <div>
+    <h3> View Product List </h3>
   <button id='productList-data'>Get Product List</button>
-			<div id='ajax-productList'>[List...]</div>
+			<div id='ajax-productList'></div>
       
-			<br>
-			<br>
-    
-    <a class="product_list" href='http://localhost:3000/products' onclick="listProduct()">Product List</a>   
-</p>
+			<br></br>  
+  </div>
+
+  
+ 
 
 <% end %>
 

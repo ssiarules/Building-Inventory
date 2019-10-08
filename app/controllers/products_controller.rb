@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
         @products = Product.ordered
         @user_products = current_user.products.ordered 
         respond_to do |format|
-          format.html {render :index, layout: false}
+          format.html {render :index}
           format.json {render json: @products}
         end
       end
@@ -16,6 +16,9 @@ class ProductsController < ApplicationController
     def new 
         @product = Product.new
         @product.build_building #belongs_to relationship for the nested building in product form
+        if params[:layout] == 'false' 
+            render :new, layout: false 
+        end 
     end 
 
     def create 

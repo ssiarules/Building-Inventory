@@ -1,5 +1,7 @@
 {
   "name": "Building_Inventory",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "jquery": "^3.4.1"
+  }
 }
