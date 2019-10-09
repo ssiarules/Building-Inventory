@@ -8,7 +8,7 @@
 <%  @user_products.each do |product| %> 
 <li>
   <%=product.created_at.strftime("%m/%d/%Y") %> |
-  <strong><%= product.name %></strong> |
+  <strong><%= link_to product.name, product_path(product) %></strong> |
   <%=product.building.name %> |
   <%=product.category %>  |
   <%=product.description %> |
