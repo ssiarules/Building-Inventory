@@ -6,17 +6,19 @@ document.addEventListener('turbolinks:load',() => {
             .then(products => displayProducts(products))
             .catch(err => displayError("Product Not Found"))
     })
-        let newProductForm = document.getElementById('new_product')
-        newProductForm.addEventListner('submit', (e) = {
-            let data = {product: {}};
-        })
+    let newProductForm = document.getElementById('new_product')
+    newProductForm.addEventListner('submit',(e) = {
+        let data = { product: {} };
+        data['product']['name'] = e.target.querySelector('product-name').value 
+            data['product'][''] = e.target.querySelector('product-name').value
+    })
 
 })
 
 const getProducts = (buildingId) => {
     return fetch(`http://localhost:3000/buildings/${ buildingId }/products.json`)
 }
- 
+
 const displayProducts = (results) => {
     let html = result.map(productData => new Product(productData).render()).join('')
     document.getElementById('buildingProducts').innerHTML = html
