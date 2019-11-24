@@ -1,17 +1,38 @@
 class ProductsController < ApplicationController
     
-    skip_before_action :verify_authenticity_token 
+    #skip_before_action :verify_authenticity_token 
     #The authenticity token is designed so that you know your form is being submitted from your website. It is generated from the machine on which it runs with a unique identifier that only your machine can know, thus helping prevent cross-site request forgery attacks.
    
-    def index
+ def index 
+
         @products = Product.ordered
-        @user_products = current_user.products.ordered 
+        @user_products = current_user.products.ordered
+        if params[:building_id]
+        @building = Building.find_by(id: params[:building_id])
+        @products = @building && @building.products
+        if @products 
         respond_to do |format|
-          format.html {render :index}
-          format.json {render json: @products}
+            format.html {} #render :index, layout: false
+            format.json {render json: @products, each_serializer: ProductBuildingSerializer }
+          end
+          else
+        @error = "Building not found!"
+        respond_to do |format|
+          format.html {}
+          format.json { render json: {message: @error}, status: :not_found }
         end
       end
-
+    else
+      @products = Product.all 
+      respond_to do |format|
+        format.html {}
+        format.json { render json: @products }
+      end
+    end
+    
+  end 
+       
+  
 
     def new 
         @product = Product.new
@@ -22,22 +43,38 @@ class ProductsController < ApplicationController
     end 
 
     def create 
-        @product = current_user.products.build(product_params)
-        if  @product.save
-            flash[:success] = "Product Successfully Created!"
+    if params[:building_id]
+     @building = Building.find_by(id: params[:building_id])
+     return unless @building
+     @product = @building.products.build(product_params)
+    if @product.save
             respond_to do |f|
-                f.html {redirect_to product_path }
+                f.html {redirect_to @building}
                 f.json {render json: @products}
-        end 
-          else 
-            render :new
-        end      
-    end 
+                flash[:success] = "Product Successfully Created!"
+         end
+         else
+     end 
+end 
+
+
+    #def create 
+      #  @product = current_user.products.build(product_params)
+      #  if  @product.save
+         #   flash[:success] = "Product Successfully Created!"
+           # respond_to do |f|
+            #    f.html {redirect_to @product}
+            #    f.json {render json: @products}
+       # end 
+         # else 
+          #  render :new
+        #end      
+    #end 
 
     def show 
-        @product = Product.find(params[:id])
+        @product = Product.find_by(id: params[:id])
         respond_to do |f|
-			f.html {render :show, layout: false}
+			f.html {render :show }
 			f.json {render json: @product }
 		end
     end 
@@ -72,6 +109,9 @@ end
     end 
 
 end
+end 
+
+
 
 
     

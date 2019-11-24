@@ -29,13 +29,15 @@
  <div> <%= f.label :date_added %> :<div>
  <%= f.date_field :date_added %>
 
-<h3>If building not listed please create a building!</h3>
+<%#
+ <h3>If building not listed please create a building!</h3>
     <%= fields_for :building do |building|%>
-      <%= building.label :name %>
-      <%= building.text_field :name %>
-      <% end %>
+    <%#  <%= building.label :name %>
+    <%#  <%= building.text_field :name %>
+    <%#  <% end %>
     
     <br></br>
+    
   
   <%= f.submit%>
 
@@ -46,6 +48,9 @@
 			<div id='ajax-productList'></div>
       
 			<br></br>  
+
+      <button id='NewProductForm'>New Product</button>
+			<div id="new-product-form-div">[form]</div>
   </div>
 
   

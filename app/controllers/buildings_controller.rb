@@ -5,7 +5,7 @@ class BuildingsController < ApplicationController
         @user_buildings = current_user.buildings.ordered
         respond_to do |format|
             format.html {render :index, layout: false}
-            format.json {render json: @buildings}
+            format.json {render json: @buildings, each_serializer: BuildingSerializer}
           end
     end 
 
@@ -20,7 +20,7 @@ class BuildingsController < ApplicationController
         if  @building.save
              flash[:success] = "Building Successfully Created!"
              respond_to do |f|
-                f.html {redirect_to buildings_path}
+                f.html {redirect_to building_path}
                 f.json {render json: @buildings}
              end 
         else 
@@ -55,12 +55,22 @@ end
 
 
 def show 
-    @building = Building.find(params[:id])
+    @building = Building.find_by(id: params[:id])
+    redirect_to buildings_path unless @building
     respond_to do |f|
-        f.html {render :show, layout: false}
-        f.json {render json: @building }
+      f.html { render :show}
+      f.json { render json: @building }
     end
-end 
+  end
+
+
+#def show 
+   # @building = Building.find(params[:id])
+    #respond_to do |f|
+      # f.html {render :show, layout: false}
+      # f.json {render json: @building }
+    #end
+#end 
 
     
     private 

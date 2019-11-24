@@ -3,13 +3,43 @@
 <h1><%= @building.name%></h1>
 
 <p>
-
-    <%= link_to "Building Name", building_path(@building), :class => "building_names" %>
 </p>
 
 <p><%= link_to "Edit", edit_building_path(@building) %></p>
 <p><%= link_to "Delete", building_path(@building),
                             method: :delete, 
                             data: { confirm: 'Are Your Sure?'} %>
-                         
-                        
+          
+          <br> <br>   
+  
+<button id="productsBuildings" data-id="<%= @building.id %>" >Products Associated with this Building </button>
+<div id="buildingProducts"></div>
+
+<h1>Add Product</h1>
+
+<%= form_for([ @building, Product.new]) do |f |%>
+<p>
+    <%= f.label :name %>
+    <%= f.text_field :name%>
+</p>
+
+<p>
+    <%= f.label :category %>
+    <%= f.select "category", ["Kitchen", "Printing Station", "Bathroom", "Honesty Market", "Common Area", "Grubmarket", "Other"], prompt: true  %>
+</p>
+
+<p>
+    <%= f.label :description %>
+    <%= f.text_field :description%>
+</p>
+
+<p>
+    <%= f.label :date_added %>
+    <%= f.date_field :date_added%>
+</p>
+<%= f.submit 'Add Product' %>
+<% end %>
+ 
+ <br> <br>            
+<button> <%= link_to 'Back', buildings_path %> </button>   
+           

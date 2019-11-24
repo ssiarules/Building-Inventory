@@ -1,20 +1,23 @@
 <%= link_to 'Home', sessions_path %>
 
-
-
 <h1>My Products</h1>
 
 <ul>
 <%  @user_products.each do |product| %> 
 <li>
   <%=product.created_at.strftime("%m/%d/%Y") %> |
+    
   <strong><%= link_to product.name, product_path(product) %></strong> |
+    
   <%=product.building.name %> |
+    
   <%=product.category %>  |
-  <%=product.description %> |
+     
+  <%=product.description %> 
+      
   
   
-  <%= link_to " My Building Products ", product_buildings_path(product)%> <!--nested new route -->
+  <!--<%= link_to " My Building Products ", product_buildings_path(product)%> --> <!--nested new route -->
 
 </li>
 
@@ -33,45 +36,6 @@
 
 <br><br>
 
- <!--
-<div>
-      <button id='ajax-create-product'>Create New Product!!!</button>
-      <div id='create-product-form'>[create Product Form]<div>
-  <%= link_to "Create a new Product!!!", products_new_path, remote: true %>
-</div>
-=end 
-
-<br>
-
-<div>
-      <h3>Create a new Product!!</h3>
-      <button id='ajax-new-product'>New Product</button>
-      <div id='new-product-form'>[New Product Form]<div>
-
-</div>
--->
-
-<!--
-<h1>Other Users' Products</h1>
-
-<ul>
-<%  @products.each do |product| %>
-<li>
-<%=product.created_at.strftime("%m/%d/%Y") %> |
-  <strong><%= product.name %></strong> |
-  <%=product.building.name %> |
-  <%=product.category %> |
-  <%=product.description %> |
-  
-  
-
-
-  <%= link_to "My Building Products", product_buildings_path(product)%>
-
-</li>
-
-<% end %>
--->
 
 
 

@@ -8,6 +8,8 @@
 
     <%= @product.description %> <br>
 
+    <%= @product.building_id %> <br>
+
     <%= @product.created_at.try(:strftime, ("%m/%d/%Y")) %> <br>
 </p>
 
@@ -15,8 +17,8 @@
 <p><%= link_to "Delete", product_path(@product),
                          :data => {:confirm => "You sure?",
                                    :method => "delete"} %></p>
-<button>Show Building Product </button>
+<button id="buildingProducts">Show Building Products </button>
 <div id="buildingProducts"></div>
 
 <br></br>
-<%= link_to 'Back', products_path %>
+<button> <%= link_to 'Back', products_path %></button>
