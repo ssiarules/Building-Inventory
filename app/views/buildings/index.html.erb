@@ -5,18 +5,24 @@
 
 <div>
   <ul>
-   <%  @user_buildings.each do |building| %>
-<li>
-    <strong><%= link_to building.name, building_path(building)%></strong> 
-    
-</li>
-
+       <%  @user_buildings.each do |building| %>
+    <li>
+        <strong><%= link_to building.name, building_path(building)%></strong> 
+    </li>
 </div>
 
 <br></br>
 
 
+
 <% end %>
+
+<div>
+<button id='NewBuildingForm'>New Building</button>
+      	<br></br> 
+			<div id="new-building-form-div">[form]</div>
+</div>
+
 
 
 

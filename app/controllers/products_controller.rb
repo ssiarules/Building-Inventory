@@ -4,29 +4,6 @@ class ProductsController < ApplicationController
     #The authenticity token is designed so that you know your form is being submitted from your website. It is generated from the machine on which it runs with a unique identifier that only your machine can know, thus helping prevent cross-site request forgery attacks.
    
 
-=begin def index
-		if params["building_id"]
-			@building = Building.find(params["building_id"])
-			@products = Product.all.where(building_id: params["building_id"])
-
-			respond_to do |format|
-				format.html {render partial: 'products/building_products', locals: { products: @products, building: @building}}
-				format.json {render json: @products}
-			end
-		else
-			@products = Product.all
-			respond_to do |f|
-				f.html {render :index} 
-				f.json {render json: @products, each_serializer: ProductBuildingSerializer}
-			end
-		end
-	end 
-=end 
-
-
-
-
-
 def index 
 
         @products = Product.ordered
@@ -54,49 +31,29 @@ def index
       end
     end
     
-  end 
+end 
 
-  
-
-       
-  
-
-    def new 
+def new 
         @product = Product.new
         @product.build_building #belongs_to relationship for the nested building in product form
         if params[:layout] == 'false' 
             render :new, layout: false 
         end 
-    end 
+ end 
+
 
     def create 
-    if params[:building_id]
-     @building = Building.find_by(id: product_params[:building_id])
-     return unless @building
-     @product = @building.products.build(product_params)
-    if @product.save
+        @product = current_user.products.build(product_params)
+        if  @product.save
+            flash[:success] = "Product Successfully Created!"
             respond_to do |f|
-                f.html {redirect_to @building}
+               f.html {redirect_to @product}
                 f.json {render json: @products}
-                flash[:success] = "Product Successfully Created!"
-         end
-         else
-     end 
-end 
-
-
-    #def create 
-      #  @product = current_user.products.build(product_params)
-      #  if  @product.save
-         #   flash[:success] = "Product Successfully Created!"
-           # respond_to do |f|
-            #    f.html {redirect_to @product}
-            #    f.json {render json: @products}
-       # end 
-         # else 
-          #  render :new
-        #end      
-    #end 
+        end 
+          else 
+            render :new
+        end      
+    end 
 
 def show 
         @product = Product.find(params['id'])
@@ -106,16 +63,6 @@ def show
 		end
  end 
 
-
-#DAKOTA WAY 
-=begin def show 
-        @product = Product.find_by(id: params[:id])
-        respond_to do |f|
-			f.html {render :show }
-			f.json {render json: @product }
-		end
-    end 
-=end 
 
     def edit 
         @product = Product.find(params[:id])
@@ -146,8 +93,9 @@ end
         params.require(:product).permit(:name, :category, :description, :date_added, :building_product, :building_id, building_attributes: [:name])
     end 
 
-end
 end 
+ 
+
 
 
 
