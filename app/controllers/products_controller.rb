@@ -1,9 +1,33 @@
 class ProductsController < ApplicationController
     
-    #skip_before_action :verify_authenticity_token 
+    skip_before_action :verify_authenticity_token 
     #The authenticity token is designed so that you know your form is being submitted from your website. It is generated from the machine on which it runs with a unique identifier that only your machine can know, thus helping prevent cross-site request forgery attacks.
    
- def index 
+
+=begin def index
+		if params["building_id"]
+			@building = Building.find(params["building_id"])
+			@products = Product.all.where(building_id: params["building_id"])
+
+			respond_to do |format|
+				format.html {render partial: 'products/building_products', locals: { products: @products, building: @building}}
+				format.json {render json: @products}
+			end
+		else
+			@products = Product.all
+			respond_to do |f|
+				f.html {render :index} 
+				f.json {render json: @products, each_serializer: ProductBuildingSerializer}
+			end
+		end
+	end 
+=end 
+
+
+
+
+
+def index 
 
         @products = Product.ordered
         @user_products = current_user.products.ordered
@@ -31,6 +55,9 @@ class ProductsController < ApplicationController
     end
     
   end 
+
+  
+
        
   
 
@@ -44,7 +71,7 @@ class ProductsController < ApplicationController
 
     def create 
     if params[:building_id]
-     @building = Building.find_by(id: params[:building_id])
+     @building = Building.find_by(id: product_params[:building_id])
      return unless @building
      @product = @building.products.build(product_params)
     if @product.save
@@ -71,13 +98,24 @@ end
         #end      
     #end 
 
-    def show 
+def show 
+        @product = Product.find(params['id'])
+        respond_to do |f|
+			f.html {render :show }
+			f.json {render json: @product }
+		end
+ end 
+
+
+#DAKOTA WAY 
+=begin def show 
         @product = Product.find_by(id: params[:id])
         respond_to do |f|
 			f.html {render :show }
 			f.json {render json: @product }
 		end
     end 
+=end 
 
     def edit 
         @product = Product.find(params[:id])

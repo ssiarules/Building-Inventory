@@ -1,3 +1,139 @@
+
+// BRAD SMITH OF DOING IT
+$(function() {
+    console.log('list all products!...')
+    listenForClick()
+    listenForNewProductFormClick()
+    //displayProductForm()
+});
+
+
+function listenForClick() {
+    $('button#productsBuildings').on("click",function(e) {
+        e.preventDefault();
+        getProductList(e.target.dataset.id) // don't forget to specify  
+        console.log("clicked it works!")
+    })
+}
+
+const getProductList = (buildingId) => {
+    return fetch(`http://localhost:3000/buildings/${ buildingId }/products.json`)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            console.log(data);
+            data.map(product => {
+                const newProduct = new Product(product)
+                const newProductHtml = newProduct.productHTML()
+                document.getElementById('buildingProducts').innerHTML += newProductHtml
+
+            });
+        });
+
+};
+
+/*
+function getProductList(buildingId) {
+    fetch('http://localhost:3000/buildings/')
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            console.log(data);
+            debugger
+            data.map(product => {
+                const newProduct = new Product(product)
+                const newProductHtml = newProduct.productHTML()
+                document.getElementById('productList').innerHTML += newProductHtml
+
+            });
+        });
+};
+*/
+
+function listenForNewProductFormClick() {
+    $('button#NewProductForm').on("click",function(e) {
+        e.preventDefault();
+        let newProductForm = Product.newProductForm()
+        // newProductForm()
+        document.querySelector('div#new-product-form-div').innerHTML = newProductForm
+        console.log("New Form Works!")
+        debugger
+    })
+}
+
+class Product {
+    constructor (obj) {
+        this.id = obj.id
+        this.name = obj.name
+
+    }
+}
+
+/*
+this.category = obj.category
+        this.description = obj.description
+        this.building = obj.building
+        this.date_added = obj.date_added
+    }
+    */
+
+/*
+static newProductForm() {
+    return (`
+                <strong> New Product Form </strong>
+                <form>
+                    <input id='product-name' type='text' name='name'></input><br>
+                    <input id='product-category' type='select' name='category'></input><br>
+                    <input id='product-description' type='text' name='description'></input><br>
+                    <input type='submit' />
+                </form>
+ 
+      `)
+};
+*/
+
+
+Product.prototype.productHTML = function() {
+    return (`
+            <div class = 'product' >
+                <h3>${this.name }</h3>
+                <p>${this.category }</p>
+                <p>${this.description }</p>
+                <p>${this.building }</p>
+                <p>${this.date_added }</p>
+            </div>
+
+          `)
+}
+
+function newProductForm() {
+    fetch("http://localhost:3000/products/new")
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            console.log(data)
+            debugger
+        });
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* DAKOTA WAY TO DO IT
 document.addEventListener('turbolinks:load',() => {
     let productsBuildingsButton = document.getElementById('productsBuildings')
     productsBuildingsButton.addEventListener('click',(e) => {
@@ -7,9 +143,9 @@ document.addEventListener('turbolinks:load',() => {
             .catch(err => displayError("Product Not Found"))
     })
     let newProductForm = document.getElementById('new_product')
-    newProductForm.addEventListner('submit',(e) = {
+    newProductForm.addEventListener('submit',(e) = {
         let data = { product: {} };
-        data['product']['name'] = e.target.querySelector('product-name').value 
+        data['product']['name'] = e.target.querySelector('product-name').value
             data['product'][''] = e.target.querySelector('product-name').value
     })
 
@@ -40,8 +176,9 @@ class Product {
     }
 }
 
+*/
 
-/*
+/* BRAD SMITH OF DOING IT
 $(function() {
     console.log('list all products!...')
     listenForClick()
