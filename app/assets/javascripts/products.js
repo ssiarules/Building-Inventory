@@ -33,6 +33,44 @@ const getProductList = (buildingId) => {
 
 };
 
+function listenForNewProductFormClick() {
+    $('button#NewProductForm').on("click",function(e) {
+        e.preventDefault();
+        let newProductForm = Product.newProductForm()
+        document.querySelector('div#new-product-form-div').innerHTML = newProductForm
+        console.log("New Form Works!")
+
+    })
+}
+
+
+
+class Product {
+    constructor (obj) {
+        this.id = obj.id
+        this.name = obj.name
+        this.category = obj.category
+        this.description = obj.description
+        this.building = obj.building
+        this.date_added = obj.date_added
+    }
+
+    static newProductForm() {
+        return (`
+                <strong> New Product Form </strong>
+                	<br></br> 
+                <form>
+                    <input id='product-name' type='text' name='name'></input><br>
+                    <input id='product-category' type='select' name='category'></input><br>
+                    <input id='product-description' type='text' name='description'></input><br>
+                    <input type='submit' />
+                </form>
+ 
+      `)
+    };
+
+}
+
 Product.prototype.productHTML = function() {
     return (`
             <div class = 'product' >
@@ -60,46 +98,14 @@ function getProductList(buildingId) {
 };
 */
 
-function listenForNewProductFormClick() {
-    $('button#NewProductForm').on("click",function(e) {
-        e.preventDefault();
-        let newProductForm = Product.newProductForm()
-        // newProductForm()
-        document.querySelector('div#new-product-form-div').innerHTML = newProductForm
-        console.log("New Form Works!")
-        debugger
-    })
-}
 
-class Product {
-    constructor (obj) {
-        this.id = obj.id
-        this.name = obj.name
-        this.category = obj.category
-        this.description = obj.description
-        this.building = obj.building
-        this.date_added = obj.date_added
-    }
-}
 
 /*
 
     */
 
 /*
-static newProductForm() {
-    return (`
-                <strong> New Product Form </strong>
-                <form>
-                    <input id='product-name' type='text' name='name'></input><br>
-                    <input id='product-category' type='select' name='category'></input><br>
-                    <input id='product-description' type='text' name='description'></input><br>
-                    <input type='submit' />
-                </form>
- 
-      `)
-};
-*/
+
 
 
 
@@ -114,6 +120,7 @@ function newProductForm() {
             debugger
         });
 };
+*/
 
 
 
