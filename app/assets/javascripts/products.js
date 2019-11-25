@@ -33,6 +33,14 @@ const getProductList = (buildingId) => {
 
 };
 
+Product.prototype.productHTML = function() {
+    return (`
+            <div class = 'product' >
+                <h3>${this.name }</h3>
+             </div>
+       `)
+}
+
 /*
 function getProductList(buildingId) {
     fetch('http://localhost:3000/buildings/')
@@ -67,16 +75,15 @@ class Product {
     constructor (obj) {
         this.id = obj.id
         this.name = obj.name
-
-    }
-}
-
-/*
-this.category = obj.category
+        this.category = obj.category
         this.description = obj.description
         this.building = obj.building
         this.date_added = obj.date_added
     }
+}
+
+/*
+
     */
 
 /*
@@ -95,18 +102,7 @@ static newProductForm() {
 */
 
 
-Product.prototype.productHTML = function() {
-    return (`
-            <div class = 'product' >
-                <h3>${this.name }</h3>
-                <p>${this.category }</p>
-                <p>${this.description }</p>
-                <p>${this.building }</p>
-                <p>${this.date_added }</p>
-            </div>
 
-          `)
-}
 
 function newProductForm() {
     fetch("http://localhost:3000/products/new")
